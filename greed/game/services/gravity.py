@@ -1,6 +1,7 @@
 '''
     This class is for adding "gravity" to the game which will drop the 
     gems and rocks
+    It sets the velocity of the gems and rocks falling
 '''
 from game.shared.point import Point
 

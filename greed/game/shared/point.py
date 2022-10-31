@@ -42,6 +42,20 @@ class Point:
             boolean: True if both x and y are equal; false if otherwise.
         """
         return self._x == other.get_x() and self._y == other.get_y()
+    
+    def in_range(self, other):
+        '''
+            Checks whether the gem or rock are close enough to the user
+            
+            args:
+                other (Point): the Point that is being checked against
+                
+            return:
+                boolean: True if they are with in desired range, False if not
+                
+        '''
+        if self._x == other.get_x():
+            return (self._y + 10) >= other.get_y() and (self._y - 10) <= other.get_y()
 
     def get_x(self):
         """Gets the horizontal distance.

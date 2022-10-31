@@ -58,11 +58,14 @@ class Director:
         robot.move_next(max_x, max_y)
         
         for artifact in artifacts:
+                # sets the gravity for each item and then moves them
             self._gravity.drop_down(artifact)
             artifact.move_next(max_x, max_y)
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
+            
+            # if robot.get_position().equals(artifact.get_position()):
+            if robot.get_position().in_range(artifact.get_position()):
+                # need to delete the rock/gem and add to the score
+                cast.remove_actor('artifacts', artifact)
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
