@@ -8,7 +8,7 @@ class Director:
         _video_service (VideoService): For providing video output.
     """
 
-    def __init__(self, keyboard_service, video_service, gravity):
+    def __init__(self, keyboard_service, video_service, artifact_adder, gravity):
         """Constructs a new Director using the specified keyboard and video services.
         
         Args:
@@ -17,6 +17,7 @@ class Director:
         """
         self._keyboard_service = keyboard_service
         self._video_service = video_service
+        self._artifact_adder = artifact_adder
         self._gravity = gravity
         
     def start_game(self, cast):
@@ -64,8 +65,11 @@ class Director:
             
             # if robot.get_position().equals(artifact.get_position()):
             if robot.get_position().in_range(artifact.get_position()):
-                # need to delete the rock/gem and add to the score
+                    # need to delete the rock/gem and add to the score
                 cast.remove_actor('artifacts', artifact)
+                    # adds a new artifact
+                self._artifact_adder.add()
+                
         
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
