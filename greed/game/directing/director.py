@@ -1,3 +1,5 @@
+import random
+
 class Director:
     """A person who directs the game. 
     
@@ -67,8 +69,10 @@ class Director:
             if robot.get_position().in_range(artifact.get_position()):
                     # need to delete the rock/gem and add to the score
                 cast.remove_actor('artifacts', artifact)
-                    # adds a new artifact
-                self._artifact_adder.add()
+        
+        if not random.randint(1, 100) % 6 and len(artifacts) <= 500:
+            self._artifact_adder.add()
+        
                 
         
     def _do_outputs(self, cast):

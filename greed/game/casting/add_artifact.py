@@ -18,13 +18,18 @@ class AddArtifact:
         self._ROWS = rows
         self._CELL_SIZE = cell_size
     
-    def add(self):
+    def add(self, from_top = True):
         text = chr(random.randint(33, 126))
         # message = self._messages[message_num]
 
         x = random.randint(1, self._COLS - 1)
         # y = random.randint(1, self._ROWS - 1)
-        y = 0
+        
+        if from_top:
+            y = 1
+        else:
+            y = random.randint(1, self._ROWS * .8)
+            
         position = Point(x, y)
         position = position.scale(self._CELL_SIZE)
 

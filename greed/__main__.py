@@ -65,7 +65,7 @@ def main():
     
     for n in range(DEFAULT_ARTIFACTS):
         
-        artifact_adder.add()
+        artifact_adder.add(from_top = False)
     
     # start the game
     keyboard_service = KeyboardService(CELL_SIZE)
