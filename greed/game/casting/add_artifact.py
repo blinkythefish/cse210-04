@@ -19,8 +19,12 @@ class AddArtifact:
         self._CELL_SIZE = cell_size
     
     def add(self, from_top = True):
-        text = chr(random.randint(33, 126))
-        # message = self._messages[message_num]
+        if random.randint(0, 1):
+            text = chr(42)
+            message = 'rock'
+        else: 
+            text = chr(111)
+            message = 'gem'
 
         x = random.randint(1, self._COLS - 1)
         # y = random.randint(1, self._ROWS - 1)
@@ -43,5 +47,5 @@ class AddArtifact:
         artifact.set_font_size(self._FONT_SIZE)
         artifact.set_color(color)
         artifact.set_position(position)
-        # artifact.set_message(message)
+        artifact.set_message(message)
         self._cast.add_actor("artifacts", artifact)
