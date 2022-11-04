@@ -21,10 +21,10 @@ class AddArtifact:
     def add(self, from_top = True):
         if random.randint(0, 1):
             text = chr(42)
-            message = 'rock'
+            message = 'gem'
         else: 
             text = chr(111)
-            message = 'gem'
+            message = 'rock'
 
         x = random.randint(1, self._COLS - 1)
         # y = random.randint(1, self._ROWS - 1)

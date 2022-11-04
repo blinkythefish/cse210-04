@@ -21,6 +21,7 @@ class Director:
         self._video_service = video_service
         self._artifact_adder = artifact_adder
         self._gravity = gravity
+        self._score = 0
         
     def start_game(self, cast):
         """Starts the game using the given cast. Runs the main game loop.
@@ -55,7 +56,7 @@ class Director:
         robot = cast.get_first_actor("robots")
         artifacts = cast.get_actors("artifacts")
 
-        banner.set_text("")
+        
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
@@ -69,6 +70,14 @@ class Director:
             if robot.get_position().in_range(artifact.get_position()):
                     # need to delete the rock/gem and add to the score
                 cast.remove_actor('artifacts', artifact)
+                
+                if artifact.get_message() == 'rock':
+                    self._score -= 1
+                else:
+                    self._score += 1
+
+        banner.set_text("Score: " + str(self._score))
+
         
         if not random.randint(1, 100) % 6 and len(artifacts) <= 500:
             self._artifact_adder.add()
